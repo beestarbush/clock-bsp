@@ -14,6 +14,7 @@ IMAGE_FSTYPES_raspberrypi0-wifi ?= "tar.bz2 rpi-sdimg"
 IMAGE_FEATURES += "ssh-server-dropbear"
 
 IMAGE_INSTALL:append = " \
+	ca-certificates \
 	qtbase-plugins \
 	qtdeclarative \
 	qtdeclarative-plugins \
