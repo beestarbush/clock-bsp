@@ -9,8 +9,8 @@ DEFAULT_PREFERENCE="-1"
 PVBASE := "${PV}"
 
 BRANCH_PATH = ""
-BRANCH = "2025.10"
-TAG = "2025.10.2"
+BRANCH = "2025.11"
+TAG = "2025.11.0"
 SRC_URI = "\
     git://github.com/beestarbush/ClockApp.git;branch=${BRANCH};tag=${TAG};protocol=https \
     file://clockapp.service \
@@ -93,6 +93,5 @@ do_install:append () {
     install -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/clockapp.service ${D}${systemd_unitdir}/system
 
-    install -d ${D}/usr/share/bee/animations
-    install -m 0644 ${S}/animations/test.gif ${D}/usr/share/bee/animations
+    install -d ${D}/usr/share/bee/media
 }
