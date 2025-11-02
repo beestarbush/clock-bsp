@@ -7,3 +7,5 @@ workdir/build/conf/templateconf.cfg
 workdir/build/downloads/
 workdir/build/sstate-cache/
 workdir/build/tmp*
+workdir/build/workspace
+actions-runner/

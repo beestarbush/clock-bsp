@@ -1,9 +1,15 @@
 name: Build Bee BSP
 
+on:
+    push:
+      branches:
+        - master
+      tags:
+        - '*'
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v4
@@ -20,4 +26,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
               name: Product
-              path: /workdir/build/tmp/deploy/images/*
+              path: /workdir/build/tmp/deploy/images/raspberrypi5/bee-image-raspberrypi5.rootfs-*.wic.bz2
