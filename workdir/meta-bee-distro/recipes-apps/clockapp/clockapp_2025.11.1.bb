@@ -10,7 +10,7 @@ PVBASE := "${PV}"
 
 BRANCH_PATH = ""
 BRANCH = "2025.11"
-TAG = "2025.11.0"
+TAG = "2025.11.1"
 SRC_URI = "\
     git://github.com/beestarbush/ClockApp.git;branch=${BRANCH};tag=${TAG};protocol=https \
     file://clockapp.service \
