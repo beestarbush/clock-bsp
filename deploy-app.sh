@@ -2,7 +2,7 @@
 
 # Variables
 APP_NAME="clockapp"               # systemd service name
-VERSION="2025.11.1"
+VERSION="2025.11.2"
 LOCAL_APP_PATH="workdir/build/tmp/work/cortexa76-poky-linux/clockapp/${VERSION}/package/usr/bin/clockapp"     # local path to the app binary
 REMOTE_USER="root"                     # remote device username
 REMOTE_HOST="192.168.1.221"    # remote device IP or hostname
