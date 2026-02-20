@@ -36,7 +36,9 @@ IMAGE_INSTALL:append = " \
 "
 
 IMAGE_INSTALL:append = " \
-	clockapp \
+	clock-app \
+	clock-backend \
+	clock-webapp \
 "
 
 export IMAGE_BASENAME = "bee-image"
