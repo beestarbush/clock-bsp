@@ -4,7 +4,7 @@ Description=Service for starting the clock application.
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/clockapp
+ExecStart=/usr/bin/clock-app
 
 [Install]
 WantedBy=default.target

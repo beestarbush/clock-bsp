@@ -9,11 +9,11 @@ DEFAULT_PREFERENCE="-1"
 PVBASE := "${PV}"
 
 BRANCH_PATH = ""
-BRANCH = "2025.11"
-TAG = "2025.11.2"
+BRANCH = "${PVBASE}"
+TAG = "${PVBASE}"
 SRC_URI = "\
-    git://github.com/beestarbush/ClockApp.git;branch=${BRANCH};tag=${TAG};protocol=https \
-    file://clockapp.service \
+    git://github.com/beestarbush/clock-app.git;branch=${BRANCH};tag=${TAG};protocol=https \
+    file://clock-app.service \
 "
 
 S = "${WORKDIR}/git/src"
@@ -47,6 +47,7 @@ RDEPENDS:${PN} = " \
     qtmultimedia-plugins \
     qtquick3d-plugins \
     qtquick3d-qmlplugins \
+    qtwebsockets \
 "
 
 SOLIBS = ".so"
@@ -62,7 +63,7 @@ FILES:${PN}-dev = " \
     ${FILES_SOLIBSDEV} \
 "
 
-SYSTEMD_SERVICE:${PN} = "clockapp.service"
+SYSTEMD_SERVICE:${PN} = "clock-app.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 # Ability to find GIT and PkgConfig of host instead of target only.
@@ -91,7 +92,10 @@ EOF
 
 do_install:append () {
     install -d ${D}${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/clockapp.service ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/clock-app.service ${D}${systemd_unitdir}/system
 
-    install -d ${D}/usr/share/bee/media
+    install -d ${D}/usr/share/bee/clock-app/media
+
+    # Runtime directory for cached configuration received from clock-backend
+    install -d ${D}/usr/share/bee/clock-app/configuration
 }
