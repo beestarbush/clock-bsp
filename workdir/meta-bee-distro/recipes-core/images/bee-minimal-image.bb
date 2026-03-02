@@ -33,6 +33,9 @@ IMAGE_INSTALL:append = " \
 IMAGE_INSTALL:append = " \
   linux-firmware-bcm43430 \
   bash \
+  modprobe-blacklist \
+  alsa-state \
+  alsa-utils \
 "
 
 IMAGE_INSTALL:append = " \
