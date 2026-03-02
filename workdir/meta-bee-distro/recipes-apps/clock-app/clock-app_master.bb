@@ -32,6 +32,7 @@ DEPENDS += " \
     qtquick3d-native \
     qtnetworkauth \
     qtwebsockets \
+    qrencode \
 "
 
 RDEPENDS:${PN} = " \
@@ -49,6 +50,7 @@ RDEPENDS:${PN} = " \
     qtquick3d-plugins \
     qtquick3d-qmlplugins \
     qtwebsockets \
+    qrencode \
 "
 
 SOLIBS = ".so"
