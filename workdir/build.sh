@@ -1,2 +1,2 @@
 source poky/oe-init-build-env
-bitbake bee-minimal-image
+bitbake bee-boot-image bee-minimal-image bee-rauc-bundle

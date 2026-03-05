@@ -1,0 +1,15 @@
+[Unit]
+Description=Mark RAUC slot as good after successful boot
+After=multi-user.target
+# Only run once the system is fully booted and stable
+After=clock-backend.service
+
+[Service]
+Type=oneshot
+# First promote the current slot to permanent default in autoboot.txt,
+# then tell RAUC the slot is good.
+ExecStart=/usr/lib/rauc/rpi-tryboot-backend.sh promote-current
+ExecStart=/usr/bin/rauc status mark-good
+
+[Install]
+WantedBy=multi-user.target

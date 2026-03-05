@@ -1,0 +1,13 @@
+[Unit]
+Description=Initialize persistent data partition
+DefaultDependencies=no
+After=local-fs.target
+Before=clock-backend.service clock-app.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/data-init.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -30,7 +30,7 @@ RDEPENDS:${PN} += " \
 
 FILES:${PN} += " \
     ${WEBAPP_DATADIR} \
-    ${sysconfdir}/lighttpd/conf.d/clock-webapp.conf \
+    ${sysconfdir}/lighttpd.d/clock-webapp.conf \
 "
 
 do_configure[noexec] = "1"
@@ -40,6 +40,6 @@ do_install() {
     install -d ${D}${WEBAPP_DATADIR}
     cp -r ${S}/dist/. ${D}${WEBAPP_DATADIR}/
 
-    install -d ${D}${sysconfdir}/lighttpd/conf.d
-    install -m 0644 ${WORKDIR}/clock-webapp.conf ${D}${sysconfdir}/lighttpd/conf.d/clock-webapp.conf
+    install -d ${D}${sysconfdir}/lighttpd.d
+    install -m 0644 ${WORKDIR}/clock-webapp.conf ${D}${sysconfdir}/lighttpd.d/clock-webapp.conf
 }

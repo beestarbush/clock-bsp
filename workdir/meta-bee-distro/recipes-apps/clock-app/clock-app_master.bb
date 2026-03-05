@@ -58,7 +58,6 @@ SOLIBSDEV = ".so.*"
 FILES:${PN} += " \
     /usr/lib/systemd \
     /etc/systemd/system \
-    /usr/share/bee \
     ${libdir}/lib*${SOLIBS} \
 "
 FILES_SOLIBSDEV = ""
@@ -96,9 +95,4 @@ EOF
 do_install:append () {
     install -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/clock-app.service ${D}${systemd_unitdir}/system
-
-    install -d ${D}/usr/share/bee/clock-app/media
-
-    # Runtime directory for cached configuration received from clock-backend
-    install -d ${D}/usr/share/bee/clock-app/configuration
 }

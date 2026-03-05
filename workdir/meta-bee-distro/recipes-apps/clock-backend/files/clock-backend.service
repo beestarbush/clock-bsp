@@ -1,9 +1,11 @@
 [Unit]
 Description=Clock backend WebSocket/REST service
-After=network.target
+After=network.target data-init.service
+Requires=data-init.service
 
 [Service]
 Type=simple
+WorkingDirectory=/data/clock-backend
 ExecStart=/usr/bin/clock-backend
 Restart=on-failure
 RestartSec=5

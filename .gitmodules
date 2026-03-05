@@ -14,3 +14,7 @@
 	path = workdir/meta-qt6
 	url = git://code.qt.io/yocto/meta-qt6.git
 	branch = 6.9.0
+[submodule "workdir/meta-rauc"]
+	path = workdir/meta-rauc
+	url = https://github.com/rauc/meta-rauc.git
+	branch = scarthgap

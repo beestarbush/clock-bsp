@@ -1,9 +1,10 @@
 [Unit]
 Description=Service for starting the clock application.
-# No dependencies required
+After=data-init.service
 
 [Service]
 Type=simple
+WorkingDirectory=/data/clock-app
 ExecStart=/usr/bin/clock-app
 
 [Install]

@@ -1,0 +1,20 @@
+# short-description: Create Raspberry Pi 5 A/B OTA SD card image (GPT)
+# long-description: Creates a 6-partition GPT SD card image for RPi5 with
+# RAUC A/B update support using the native tryboot mechanism.
+#
+# Partition layout:
+#   1 - firmware  (FAT32, 16MB)   autoboot.txt only
+#   2 - bootA     (FAT32, 256MB)  kernel, DTBs, overlays, config.txt, cmdline.txt
+#   3 - bootB     (FAT32, 256MB)  empty on initial flash, populated by first RAUC update
+#   4 - rootfsA   (ext4,  4GB)    active rootfs (read-only)
+#   5 - rootfsB   (ext4,  4GB)    inactive rootfs, populated by first RAUC update
+#   6 - data      (ext4)          persistent user data, RAUC state
+
+part --source rawcopy --sourceparams="file=firmware.img" --ondisk mmcblk0 --fstype=vfat --label firmware --align 4096 --fixed-size 16M
+part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label bootA --active --align 4096 --fixed-size 256M
+part --ondisk mmcblk0 --fstype=vfat --label bootB --align 4096 --fixed-size 256M
+part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label rootfsA --align 4096 --fixed-size 4G
+part --ondisk mmcblk0 --fstype=ext4 --label rootfsB --align 4096 --fixed-size 4G
+part /data --ondisk mmcblk0 --fstype=ext4 --label data --align 4096 --fixed-size 16G
+
+bootloader --ptable gpt
