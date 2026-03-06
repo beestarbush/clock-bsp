@@ -8,10 +8,10 @@ inherit cargo
 # how to get clock-backend could be as easy as but default to a git checkout:
 # SRC_URI += "crate://crates.io/clock-backend/0.1.0"
 SRC_URI += "git://github.com/beestarbush/clock-backend.git;protocol=https;nobranch=1"
-SRCREV = "38c80b55fade0eb5d728804825e7ff28b6715d65"
+SRCREV = "09bfbc756a929e98e084dbd0e9c7856f1af5b0b6"
 S = "${WORKDIR}/git"
 CARGO_SRC_DIR = ""
-PV:append = ".AUTOINC+38c80b55fa"
+PV:append = ".AUTOINC+09bfbc756a"
 
 # please note if you have entries that do not begin with crate://
 # you must change them to how that package can be fetched

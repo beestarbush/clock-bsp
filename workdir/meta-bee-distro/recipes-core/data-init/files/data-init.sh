@@ -24,8 +24,8 @@ mkdir -p "${DATA_DIR}/etc/wpa_supplicant"
 
 # Copy default clock-backend configuration if not present (first boot)
 if [ ! -f "${DATA_DIR}/clock-backend/configuration.json" ]; then
-    if [ -f /usr/share/bee/clock-backend/configuration.json ]; then
-        cp /usr/share/bee/clock-backend/configuration.json \
+    if [ -f /usr/share/bee/clock-backend/default_configuration.json ]; then
+        cp /usr/share/bee/clock-backend/default_configuration.json \
            "${DATA_DIR}/clock-backend/configuration.json"
         echo "Initialized clock-backend configuration from defaults."
     fi

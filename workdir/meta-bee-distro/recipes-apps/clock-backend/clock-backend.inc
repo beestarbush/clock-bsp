@@ -29,7 +29,7 @@ do_install:append() {
 
     # Install working directory with default configuration
     install -d ${D}${BACKEND_DATADIR}
-    install -m 0644 ${S}/configuration.json ${D}${BACKEND_DATADIR}/configuration.json
+    install -m 0644 ${S}/default_configuration.json ${D}${BACKEND_DATADIR}/default_configuration.json
 
     # Media directory served by the backend over HTTP
     install -d ${D}${BACKEND_DATADIR}/media
