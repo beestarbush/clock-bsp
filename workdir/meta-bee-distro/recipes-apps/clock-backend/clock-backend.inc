@@ -10,6 +10,7 @@ SRC_URI += "file://clock-backend.service"
 
 # Enable hardware paths for the target device
 CARGO_FEATURES = "target-platform"
+CARGO_BUILD_FLAGS += "--features '${CARGO_FEATURES}'"
 
 # Runtime directory and working directory for the service
 BACKEND_DATADIR = "/usr/share/bee/clock-backend"
