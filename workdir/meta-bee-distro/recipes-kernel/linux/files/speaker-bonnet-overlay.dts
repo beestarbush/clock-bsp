@@ -1,0 +1,52 @@
+// Overlay for Maxim MAX98357A audio DAC on Raspberry Pi 5 (BCM2712)
+// Uses target-path instead of phandle references to avoid __symbols__ dependency.
+// SD_MODE pin not managed by driver (no-sdmode) — tie SD pin to 3.3V on board.
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    // Enable the RP1 I2S0 controller (i2s_clk_producer on Pi 5)
+    fragment@0 {
+        target = <&i2s_clk_producer>;
+        __overlay__ {
+            status = "okay";
+        };
+    };
+
+    // Register the MAX98357A codec node
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            max98357a_dac: max98357a {
+                compatible = "maxim,max98357a";
+                #sound-dai-cells = <0>;
+                status = "okay";
+            };
+        };
+    };
+
+    // Create the simple-audio-card machine driver
+    // Uses target-path = "/" to avoid depending on &sound symbol
+    // which is disabled and may not be exported in the Pi 5 DTB __symbols__
+    fragment@2 {
+        target-path = "/";
+        __overlay__ {
+            sound_max98357a: sound {
+                compatible = "simple-audio-card";
+                simple-audio-card,format = "i2s";
+                simple-audio-card,name = "MAX98357A";
+                status = "okay";
+
+                simple-audio-card,cpu {
+                    sound-dai = <&i2s_clk_producer>;
+                };
+
+                simple-audio-card,codec {
+                    sound-dai = <&max98357a_dac>;
+                };
+            };
+        };
+    };
+};
